@@ -83,13 +83,15 @@ int month(int y, int m, int d)
 
 int main (int ac, char **av)
 {
-	int y = 2013;
-	int m = 10;
-	int d = 22;
-	char *tab[] = {"dimanche", "lundi", "mardi","mercredi","jeudi", "vendredi", "samedi"};
-	int sol = month(y, m, d);
-	if (sol < 0)
-		sol = 7 + sol;
-	printf("%s\n", tab[sol%7]);
-	
+	if (ac == 4)
+	{
+		char *tab[] = {"dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"};
+		int sol = month(atoi(av[3]), atoi(av[2]), atoi(av[1]));
+		if (sol < 0)
+			sol = 7 + sol;
+		printf("%s\n", tab[sol%7]);
+	}
+	else
+		printf("format invalid\n");
+	return (0);	
 }
